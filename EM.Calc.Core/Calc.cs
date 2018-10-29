@@ -5,20 +5,20 @@ namespace EM.Calc.Core
 {
     public class Calc
     {
-        public int Sum(int[] args)
+        public double Sum(double[] args)
         {
             return args.Sum();
         }
-        public int Sub(int[] args)
+        public double Sub(double[] args)
         {
-            int result = args[0];
-            for(int i = 1; i < args.Length; i++)
+            double result = args[0];
+            for (int i = 1; i < args.Length; i++)
             {
                 result = result - args[i];
             }
             return result;
         }
-        public double Pow(int[] args)
+        public double Pow(double[] args)
         {
             double result = args[0];
             for (int i = 1; i < args.Length; i++)
@@ -28,9 +28,9 @@ namespace EM.Calc.Core
             }
             return result;
         }
-        public int Multi(int[] args)
+        public double Multi(double[] args)
         {
-            int result = args[0];
+            double result = args[0];
             for (int i = 1; i < args.Length; i++)
             {
                 result = result * args[i];

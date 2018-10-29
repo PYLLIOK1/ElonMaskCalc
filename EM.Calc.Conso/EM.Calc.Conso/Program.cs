@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace EM.Calc.Conso
 {
@@ -7,7 +6,7 @@ namespace EM.Calc.Conso
     {
         static void Main(string[] args)
         {
-            int[] mass = Array(args);
+            double[] mass = Array(args);
             var calc = new Core.Calc();
             switch (args[0])
             {
@@ -29,13 +28,13 @@ namespace EM.Calc.Conso
             }
             Console.Read();
         }
-        private static int[] Array(string[] args)
+        private static double[] Array(string[] args)
         {
-            int[] mass = new int[args.Length-1];
+            double[] mass = new double[args.Length - 1];
             int j = 0;
-            for (int i = 1; i < args.Length; i++,j++)
+            for (int i = 1; i < args.Length; i++, j++)
             {
-                mass[j] =  Convert.ToInt32(args[i]);
+                mass[j] = Convert.ToDouble(args[i]);
             }
             return mass;
         }
