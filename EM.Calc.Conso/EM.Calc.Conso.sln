@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Calc.Conso", "EM.Calc.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Calc.Tests", "..\EM.Calc.Tests\EM.Calc.Tests.csproj", "{9EBBAB96-1B5B-4CE1-8C0B-35F84F91BC22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Calc.Core", "EM.Calc.Core\EM.Calc.Core.csproj", "{27159456-27E1-45C6-A0C4-FF6816345392}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Calc.Core", "..\EM.Calc.Core\EM.Calc.Core.csproj", "{27159456-27E1-45C6-A0C4-FF6816345392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
