@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EM.Calc.Core
 {
@@ -16,20 +18,17 @@ namespace EM.Calc.Core
         public Calc()
         {
             Operations = new List<IOperation>();
-
-            // получить текущую сборку
-            var asm = Assembly.GetExecutingAssembly();
-
-            // загрузить все типы из сборки
-            var types = asm.GetTypes();
-
-            // перебираем все классы в сборке
-            foreach (var item in types)
+            List<string> files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll").ToList<string>();
+            for (int i = 0; i < files.Count; i++)
             {
-                // если класс реализаует заданный интерфейс
-                if (item.GetInterface("IOperation") != null)
+                files[i] = Path.GetFileName(files[i].Replace(".dll", ""));
+                Assembly asm = Assembly.Load(files[i]);
+                var ClassTypes = from t in asm.GetTypes()
+                                 where t.IsClass &&
+                                   (t.GetInterface("IOperation") != null)
+                                 select t;
+                foreach (Type item in ClassTypes)
                 {
-                    //добавляем в операции экземпляр данного класса
                     var instance = Activator.CreateInstance(item);
 
                     var operation = instance as IOperation;
