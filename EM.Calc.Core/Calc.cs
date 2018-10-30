@@ -1,41 +1,86 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace EM.Calc.Core
 {
     public class Calc
     {
-        public double Sum(double[] args)
+        /// <summary>
+        /// Операции
+        /// </summary>
+
+        public IList<IOperation> Operations { get; set; }
+
+        public Calc()
         {
-            return args.Sum();
-        }
-        public double Sub(double[] args)
-        {
-            double result = args[0];
-            for (int i = 1; i < args.Length; i++)
+            Operations = new List<IOperation>();
+
+            // получить текущую сборку
+            var asm = Assembly.GetExecutingAssembly();
+
+            // загрузить все типы из сборки
+            var types = asm.GetTypes();
+
+            // перебираем все классы в сборке
+            foreach (var item in types)
             {
-                result = result - args[i];
+                // если класс реализаует заданный интерфейс
+                if (item.GetInterface("IOperation") != null)
+                {
+                    //добавляем в операции экземпляр данного класса
+                    var instance = Activator.CreateInstance(item);
+
+                    var operation = instance as IOperation;
+                    if (operation != null)
+                    {
+                        Operations.Add(operation);
+                    }
+                }
             }
-            return result;
         }
-        public double Pow(double[] args)
+        public double? Execute(string operName, double[] values)
         {
-            double result = args[0];
-            for (int i = 1; i < args.Length; i++)
+            foreach (var item in Operations)
             {
-                double pow = args[i];
-                result = Math.Pow(result, pow);
+                if (item.Name == operName)
+                {
+                    item.Operands = values;
+
+                    item.Execute();
+
+                    return item.Result;
+                }
             }
-            return result;
+            return null;
         }
-        public double Multi(double[] args)
+        #region
+        [Obsolete("Не используйте это, используйте Execute()")]
+        public double? Sum(double[] args ,string operName)
         {
-            double result = args[0];
-            for (int i = 1; i < args.Length; i++)
-            {
-                result = result * args[i];
-            }
-            return result;
+            return Execute(operName, args);
         }
+        [Obsolete("Не используйте это, используйте Execute()")]
+        public double? Sub(double[] args, string operName)
+        {
+            return Execute(operName, args);
+        }
+        [Obsolete("Не используйте это, используйте Execute()")]
+        public double? Pow(double[] args, string operName)
+        {
+            return Execute(operName, args);
+        }
+        [Obsolete("Не используйте это, используйте Execute()")]
+        public double? Multi(double[] args, string operName)
+        {
+            return Execute(operName, args);
+        }
+        [Obsolete("Не используйте это, используйте Execute()")]
+        public double? New(double[] args, string operName)
+        {
+            return Execute(operName, args);
+        }
+        #endregion
     }
 }
