@@ -30,13 +30,13 @@
         {
             this.btnExec = new System.Windows.Forms.Button();
             this.tbInput = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblOperation = new System.Windows.Forms.Label();
+            this.lblhelp = new System.Windows.Forms.Label();
             this.cbOperation = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnfav1 = new System.Windows.Forms.Button();
+            this.btnfav2 = new System.Windows.Forms.Button();
+            this.btnfav3 = new System.Windows.Forms.Button();
+            this.btnfav4 = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -48,6 +48,7 @@
             this.btnExec.TabIndex = 0;
             this.btnExec.Text = "Вычислить";
             this.btnExec.UseVisualStyleBackColor = true;
+            this.btnExec.Click += new System.EventHandler(this.btnExec_Click);
             // 
             // tbInput
             // 
@@ -56,67 +57,67 @@
             this.tbInput.Size = new System.Drawing.Size(472, 20);
             this.tbInput.TabIndex = 2;
             // 
-            // label1
+            // lblOperation
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Операции";
+            this.lblOperation.AutoSize = true;
+            this.lblOperation.Location = new System.Drawing.Point(27, 9);
+            this.lblOperation.Name = "lblOperation";
+            this.lblOperation.Size = new System.Drawing.Size(57, 13);
+            this.lblOperation.TabIndex = 3;
+            this.lblOperation.Text = "Операции";
             // 
-            // label2
+            // lblhelp
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Введите операнды через пробел";
+            this.lblhelp.AutoSize = true;
+            this.lblhelp.Location = new System.Drawing.Point(15, 101);
+            this.lblhelp.Name = "lblhelp";
+            this.lblhelp.Size = new System.Drawing.Size(173, 13);
+            this.lblhelp.TabIndex = 4;
+            this.lblhelp.Text = "Введите операнды через пробел";
             // 
             // cbOperation
             // 
             this.cbOperation.FormattingEnabled = true;
-            this.cbOperation.Location = new System.Drawing.Point(12, 25);
+            this.cbOperation.Location = new System.Drawing.Point(30, 25);
             this.cbOperation.Name = "cbOperation";
             this.cbOperation.Size = new System.Drawing.Size(121, 21);
             this.cbOperation.TabIndex = 5;
             // 
-            // button2
+            // btnfav1
             // 
-            this.button2.Location = new System.Drawing.Point(194, 11);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(60, 47);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnfav1.Location = new System.Drawing.Point(194, 11);
+            this.btnfav1.Name = "btnfav1";
+            this.btnfav1.Size = new System.Drawing.Size(60, 47);
+            this.btnfav1.TabIndex = 6;
+            this.btnfav1.Text = "первый";
+            this.btnfav1.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnfav2
             // 
-            this.button3.Location = new System.Drawing.Point(260, 11);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 47);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnfav2.Location = new System.Drawing.Point(260, 11);
+            this.btnfav2.Name = "btnfav2";
+            this.btnfav2.Size = new System.Drawing.Size(60, 47);
+            this.btnfav2.TabIndex = 7;
+            this.btnfav2.Text = "второй";
+            this.btnfav2.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnfav3
             // 
-            this.button4.Location = new System.Drawing.Point(194, 67);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(60, 47);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnfav3.Location = new System.Drawing.Point(194, 67);
+            this.btnfav3.Name = "btnfav3";
+            this.btnfav3.Size = new System.Drawing.Size(60, 47);
+            this.btnfav3.TabIndex = 8;
+            this.btnfav3.Text = "третий";
+            this.btnfav3.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnfav4
             // 
-            this.button5.Location = new System.Drawing.Point(260, 67);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(60, 47);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnfav4.Location = new System.Drawing.Point(260, 67);
+            this.btnfav4.Name = "btnfav4";
+            this.btnfav4.Size = new System.Drawing.Size(60, 47);
+            this.btnfav4.TabIndex = 9;
+            this.btnfav4.Text = "четвертый";
+            this.btnfav4.UseVisualStyleBackColor = true;
             // 
             // lblResult
             // 
@@ -133,17 +134,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 187);
             this.Controls.Add(this.lblResult);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnfav4);
+            this.Controls.Add(this.btnfav3);
+            this.Controls.Add(this.btnfav2);
+            this.Controls.Add(this.btnfav1);
             this.Controls.Add(this.cbOperation);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblhelp);
+            this.Controls.Add(this.lblOperation);
             this.Controls.Add(this.tbInput);
             this.Controls.Add(this.btnExec);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Калькулятор";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,13 +158,13 @@
 
         private System.Windows.Forms.Button btnExec;
         private System.Windows.Forms.TextBox tbInput;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblOperation;
+        private System.Windows.Forms.Label lblhelp;
         private System.Windows.Forms.ComboBox cbOperation;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnfav1;
+        private System.Windows.Forms.Button btnfav2;
+        private System.Windows.Forms.Button btnfav3;
+        private System.Windows.Forms.Button btnfav4;
         private System.Windows.Forms.Label lblResult;
     }
 }

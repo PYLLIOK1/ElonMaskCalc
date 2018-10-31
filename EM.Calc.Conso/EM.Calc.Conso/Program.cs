@@ -11,25 +11,8 @@ namespace EM.Calc.Conso
             double[] values;
             string operation, operands;
             var calc = new Core.Calc();
-
-            // найти файл с операцией
-            // загручить этот файл
-
-            // найти операцию
             var type = typeof(SumOperation);
             var memebers = type.GetMembers();
-
-            // добавить операцию в калькулятор
-
-
-
-
-
-
-
-
-
-
 
             string[] Operarions = calc.Operations
                 .Select(o => o.Name)
