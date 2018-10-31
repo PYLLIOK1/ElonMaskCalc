@@ -56,6 +56,7 @@
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(472, 20);
             this.tbInput.TabIndex = 2;
+            this.tbInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInput_KeyPress);
             // 
             // lblOperation
             // 

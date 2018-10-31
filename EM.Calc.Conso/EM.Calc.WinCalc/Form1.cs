@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,10 +30,42 @@ namespace EM.Calc.WinCalc
 
         private void btnExec_Click(object sender, EventArgs e)
         {
-            var values = tbInput.Text.Split(' ').Select(Convert.ToDouble).ToArray();
-            var operation = cbOperation.Text;
-            var result = Calc.Execute(operation, values);
-            lblResult.Text = $"Результат: {result}"; 
+            if (cbOperation.Text != "")
+            {
+                if (tbInput.Text != "" )
+                {
+                    tbInput.Text = DelSpace(tbInput.Text);
+                    var values = tbInput.Text.Split(' ').Select(Convert.ToDouble).ToArray();
+                    var operation = cbOperation.Text;
+                    var result = Calc.Execute(operation, values);
+                    lblResult.Text = $"Результат: {result}";
+                }
+                else
+                {
+                    lblResult.Text = "Результат: введите операнды";
+                }
+            }
+            else
+            {
+                lblResult.Text = "Результат: не выбрана операция";
+            }
+
+        }
+
+        private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!char.IsDigit(number) && number != 8 && number != 32) 
+            {
+                e.Handled = true;
+            }
+
+        }
+        private string DelSpace(string str)
+        {
+            var regex = new Regex(@"\s{2,}");
+            str = regex.Replace(str, " ");
+            return str;
         }
     }
 }
