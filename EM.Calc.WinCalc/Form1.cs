@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using EM.Calc.Core;
+using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using EM.Calc.Core;
 
 namespace EM.Calc.WinCalc
 {
@@ -33,7 +28,7 @@ namespace EM.Calc.WinCalc
         {
             if (cbOperation.Text != "")
             {
-                if (tbInput.Text != "" )
+                if (tbInput.Text != "")
                 {
                     tbInput.Text = DelSpace(tbInput.Text);
                     var values = tbInput.Text.Split(' ').Select(Convert.ToDouble).ToArray();
@@ -56,7 +51,7 @@ namespace EM.Calc.WinCalc
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!char.IsDigit(number) && number != 8 && number != 32 && number != '-' && number != ',') 
+            if (!char.IsDigit(number) && number != 8 && number != 32 && number != '-' && number != ',')
             {
                 e.Handled = true;
             }
@@ -74,13 +69,14 @@ namespace EM.Calc.WinCalc
             var operation = Calc.Operations
                 .OfType<IExtOperation>()
                 .FirstOrDefault(o => o.Name == cbOperation.Text);
-            if(operation != null)
+
+            if (operation != null)
             {
                 toolTip1.SetToolTip(cbOperation, operation.Description);
             }
             else
             {
-                toolTip1.SetToolTip(cbOperation, "Это старое расширение");
+                toolTip1.SetToolTip(cbOperation, "Это старая операция");
             }
         }
     }

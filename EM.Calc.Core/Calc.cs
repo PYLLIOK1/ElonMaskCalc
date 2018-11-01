@@ -18,7 +18,7 @@ namespace EM.Calc.Core
         public Calc()
         {
             Operations = new List<IOperation>();
-            List<string> files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll").ToList<string>();
+            List<string> files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "bin\\", "*.dll").ToList<string>();
             for (int i = 0; i < files.Count; i++)
             {
                 files[i] = Path.GetFileName(files[i].Replace(".dll", ""));

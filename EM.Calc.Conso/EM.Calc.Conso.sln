@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Calc.WinCalc", "..\EM.Calc.WinCalc\EM.Calc.WinCalc.csproj", "{BC7CFC08-3D74-4F33-8876-38775253DB56}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Calc.Web", "..\EM.Calc.Web\EM.Calc.Web.csproj", "{E1E25457-9FF8-4BB2-9BF7-C2F674372902}"
+	ProjectSection(ProjectDependencies) = postProject
+		{27159456-27E1-45C6-A0C4-FF6816345392} = {27159456-27E1-45C6-A0C4-FF6816345392}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

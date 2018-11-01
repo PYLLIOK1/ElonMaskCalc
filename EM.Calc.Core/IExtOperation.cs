@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EM.Calc.Core
 {
     /// <summary>
     /// Расширенная операция
     /// </summary>
-    public interface IExtOperation: IOperation
+    public interface IExtOperation : IOperation
     {
         /// <summary>
         /// Уникальный идентификатор
