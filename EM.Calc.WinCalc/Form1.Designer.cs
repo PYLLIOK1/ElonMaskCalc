@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnExec = new System.Windows.Forms.Button();
             this.tbInput = new System.Windows.Forms.TextBox();
             this.lblOperation = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.btnfav3 = new System.Windows.Forms.Button();
             this.btnfav4 = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // btnExec
@@ -83,6 +85,7 @@
             this.cbOperation.Name = "cbOperation";
             this.cbOperation.Size = new System.Drawing.Size(121, 21);
             this.cbOperation.TabIndex = 5;
+            this.cbOperation.SelectedIndexChanged += new System.EventHandler(this.cbOperation_SelectedIndexChanged);
             // 
             // btnfav1
             // 
@@ -167,6 +170,7 @@
         private System.Windows.Forms.Button btnfav3;
         private System.Windows.Forms.Button btnfav4;
         private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

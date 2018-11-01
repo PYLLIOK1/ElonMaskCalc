@@ -24,7 +24,7 @@ namespace EM.Calc.Core
                 files[i] = Path.GetFileName(files[i].Replace(".dll", ""));
                 Assembly asm = Assembly.Load(files[i]);
                 var ClassTypes = from t in asm.GetTypes()
-                                 where t.IsClass &&
+                                 where t.IsClass && !t.IsAbstract &&
                                    (t.GetInterface("IOperation") != null)
                                  select t;
                 foreach (Type item in ClassTypes)

@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EM.Calc.Core;
 
 namespace EM.Calc.WinCalc
 {
@@ -55,7 +56,7 @@ namespace EM.Calc.WinCalc
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!char.IsDigit(number) && number != 8 && number != 32) 
+            if (!char.IsDigit(number) && number != 8 && number != 32 && number != '-' && number != ',') 
             {
                 e.Handled = true;
             }
@@ -66,6 +67,21 @@ namespace EM.Calc.WinCalc
             var regex = new Regex(@"\s{2,}");
             str = regex.Replace(str, " ");
             return str;
+        }
+
+        private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var operation = Calc.Operations
+                .OfType<IExtOperation>()
+                .FirstOrDefault(o => o.Name == cbOperation.Text);
+            if(operation != null)
+            {
+                toolTip1.SetToolTip(cbOperation, operation.Description);
+            }
+            else
+            {
+                toolTip1.SetToolTip(cbOperation, "Это старое расширение");
+            }
         }
     }
 }
