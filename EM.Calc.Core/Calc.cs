@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace EM.Calc.Core
 {
@@ -12,9 +11,8 @@ namespace EM.Calc.Core
         /// <summary>
         /// Операции
         /// </summary>
-
         public IList<IOperation> Operations { get; set; }
-        public void Loader(string path, IList<string> files )
+        public void Loader(string path, IList<string> files)
         {
             for (int i = 0; i < files.Count; i++)
             {
@@ -49,7 +47,7 @@ namespace EM.Calc.Core
                 Loader(AppDomain.CurrentDomain.BaseDirectory + "bin\\", Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "bin\\", "*.dll").ToList());
                 Loader(path, Directory.GetFiles(path, "*.dll").ToList());
             }
-            
+
         }
         public Calc() : this("")
         {
@@ -71,7 +69,7 @@ namespace EM.Calc.Core
         }
         #region
         [Obsolete("Не используйте это, используйте Execute()")]
-        public double? Sum(double[] args ,string operName)
+        public double? Sum(double[] args, string operName)
         {
             return Execute(operName, args);
         }

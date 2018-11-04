@@ -1,9 +1,6 @@
-﻿using System;
+﻿using EM.Calc.Web.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using EM.Calc.Web.Models;
 
 namespace EM.Calc.Web.Controllers
 {
@@ -12,7 +9,6 @@ namespace EM.Calc.Web.Controllers
         private Core.Calc calc;
         private IEnumerable<SelectListItem> GetSelectListItems()
         {
-            // Create an empty list to hold result of the operation
             var selectList = new List<SelectListItem>();
             foreach (var element in calc.Operations)
             {
