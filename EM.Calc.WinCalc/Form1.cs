@@ -17,7 +17,8 @@ namespace EM.Calc.WinCalc
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Calc = new Core.Calc();
+            string path = AppDomain.CurrentDomain.BaseDirectory + "bin\\";
+            //Calc = new Core.Calc(path);
             string[] Operarions = Calc.Operations
                 .Select(o => o.Name)
                 .ToArray();

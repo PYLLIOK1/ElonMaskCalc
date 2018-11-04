@@ -14,15 +14,12 @@ namespace EM.Calc.Core
         /// </summary>
 
         public IList<IOperation> Operations { get; set; }
-
-        public Calc()
+        public void Loader(string path, IList<string> files )
         {
-            Operations = new List<IOperation>();
-            List<string> files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "bin\\", "*.dll").ToList<string>();
             for (int i = 0; i < files.Count; i++)
             {
-                files[i] = Path.GetFileName(files[i].Replace(".dll", ""));
-                Assembly asm = Assembly.Load(files[i]);
+                files[i] = Path.GetFileName(files[i]);
+                Assembly asm = Assembly.LoadFrom(path + files[i]);
                 var ClassTypes = from t in asm.GetTypes()
                                  where t.IsClass && !t.IsAbstract &&
                                    (t.GetInterface("IOperation") != null)
@@ -31,13 +28,31 @@ namespace EM.Calc.Core
                 {
                     var instance = Activator.CreateInstance(item);
 
-                    var operation = instance as IOperation;
+                    IOperation operation = instance as IOperation;
                     if (operation != null)
                     {
                         Operations.Add(operation);
                     }
                 }
             }
+        }
+        public Calc(string path)
+        {
+            Operations = new List<IOperation>();
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                path = AppDomain.CurrentDomain.BaseDirectory + "bin\\";
+                Loader(path, Directory.GetFiles(path, "*.dll").ToList());
+            }
+            else
+            {
+                Loader(AppDomain.CurrentDomain.BaseDirectory + "bin\\", Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "bin\\", "*.dll").ToList());
+                Loader(path, Directory.GetFiles(path, "*.dll").ToList());
+            }
+            
+        }
+        public Calc() : this("")
+        {
         }
         public double? Execute(string operName, double[] values)
         {

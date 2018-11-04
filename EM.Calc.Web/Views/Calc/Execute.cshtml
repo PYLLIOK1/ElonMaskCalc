@@ -1,7 +1,7 @@
-﻿@{
-    ViewBag.Title = "Execute";
+﻿@model EM.Calc.Web.Models.OperationResult
+
+@{
+    ViewBag.Title = @Model.Name;
 }
 
-<h2>Execute</h2>
-
-<h3>@ViewBag.Вася</h3>
+<h3>@Model.Result</h3>

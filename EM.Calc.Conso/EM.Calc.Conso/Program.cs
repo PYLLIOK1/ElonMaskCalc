@@ -10,7 +10,8 @@ namespace EM.Calc.Conso
         {
             double[] values;
             string operation, operands;
-            var calc = new Core.Calc();
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            var calc = new Core.Calc(path);
             var type = typeof(SumOperation);
             var memebers = type.GetMembers();
 
