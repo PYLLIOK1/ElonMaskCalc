@@ -7,7 +7,7 @@ namespace EM.Calc.Web.Models
     public class InputModel
     {
         [Display(Name = "Операция")]
-        [Required(ErrorMessage = "Нам обязательно нужно знать операцию")]
+        [Required]
         public string Name { get; set; }
 
         [Display(Name = "Параметры")]

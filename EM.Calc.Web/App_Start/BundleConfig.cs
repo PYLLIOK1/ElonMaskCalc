@@ -20,8 +20,8 @@ namespace EM.Calc.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/Myscripts").Include(
-                "~/bundles/Myscripts.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Myscript").Include(
+                      "~/Scripts/myscript.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

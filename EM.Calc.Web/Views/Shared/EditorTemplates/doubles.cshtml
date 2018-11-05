@@ -2,12 +2,13 @@
 
 @if (Model == null)
 {
-    <input type="number" name="Args1" class="form-control a" />
+    <input type="number" name="Args1" class="form-control first" id="number" step="any" />
     return;
 }
-
+    
 @foreach (var item in Model)
 {
     <input type="number" name="Args1" value="@item" class="form-control" />
 }
 
+    
