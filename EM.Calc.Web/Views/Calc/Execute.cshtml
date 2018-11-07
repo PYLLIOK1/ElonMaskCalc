@@ -1,7 +1,8 @@
 ﻿@model EM.Calc.Web.Models.OperationResult
+@using EM.Calc.Web.Models 
 
 @{
-    ViewBag.Title = @Model.Name;
+    Layout = null;
 }
 
-<h3>@Model.Result</h3>
+@Model.Result

@@ -1,5 +1,6 @@
 ﻿using EM.Calc.Web.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace EM.Calc.Web.Controllers
@@ -7,19 +8,6 @@ namespace EM.Calc.Web.Controllers
     public class CalcController : Controller
     {
         private Core.Calc calc;
-        private IEnumerable<SelectListItem> GetSelectListItems()
-        {
-            var selectList = new List<SelectListItem>();
-            foreach (var element in calc.Operations)
-            {
-                selectList.Add(new SelectListItem
-                {
-                    Value = element.Name,
-                    Text = element.Name
-                });
-            }
-            return selectList;
-        }
         public CalcController()
         {
             calc = new Core.Calc(@"E:\");
@@ -45,20 +33,27 @@ namespace EM.Calc.Web.Controllers
         {
             var model = new InputModel
             {
-                States = GetSelectListItems()
+                Operations = calc.Operations
             };
             return View(model);
         }
         [HttpPost]
-        public ActionResult Input(InputModel model)
+        public PartialViewResult Input(InputModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return null;
             }
+
+            if (!calc.Operations.Any(m => m.Name == model.Name))
+            {
+                ModelState.AddModelError("", "Такой операции нет");
+                return null;
+            }
+
             var result = Calc(model.Name, model.Args1);
 
-            return View("Execute", result);
+            return PartialView("Execute", result);
         }
     }
 }

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<table>
+    <tr>
+
+    </tr>
+    @foreach (var item in ViewBag.Hol)
+    {
+    <tr>
+        <td><p>@item.Id</p></td>
+        <td><p>@item.Result</p></td>
+        <td><p>@item.Args</p></td>
+        <td><p>@item.CreationDate</p></td>
+        <td><p>@item.Status</p></td>
+        <td><p>@item.ExecTime</p></td>
+        <td><p>@item.UserId</p></td>
+        <td><p>@item.OperationId</p></td>
+    </tr>
+    }
+</table>
+
