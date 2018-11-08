@@ -1,27 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EM.Calc.DB
 {
-    public class ResultOperation : IEntity
+    public class OperationResult : IEntity
     {
-        public long Id { get; set; }
+        public virtual long Id { get; set; }
 
-        public double Result { get; set; }
+        public virtual long UserId { get; set; }
 
-        public string Args { get; set; }
+        public virtual User User { get; set; }
 
-        public DateTime? CreationDate { get; set; }
+        public virtual long OperationId { get; set; }
 
-        public int Status { get; set; }
+        public virtual string Args { get; set; }
 
-        public long ExecTime { get; set; }
+        public virtual double Result { get; set; }
 
-        public long UserId { get; set; }
+        public virtual DateTime CreationDate { get; set; }
 
-        public long OperationId { get; set; }
+        public virtual OperationResultStatus Status { get; set; }
+
+        public virtual long ExecTime { get; set; }
+    }
+
+    public enum OperationResultStatus
+    {
+        DONE,
+        EXECUTING,
+        FAIL
     }
 }

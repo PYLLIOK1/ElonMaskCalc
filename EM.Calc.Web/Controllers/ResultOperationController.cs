@@ -9,18 +9,19 @@ namespace EM.Calc.Web.Controllers
 {
     public class ResultOperationController : Controller
     {
-            string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Макс\Desktop\Курсы\1\ElonMaskCalc\EM.Calc.Web\App_Data\ElonMusk.mdf;Integrated Security=True";
-
-            ResultOperationRepository ResultOperationRepository;
+        IEntityRepository<OperationResult> OperationResultRepository;
 
         public ResultOperationController()
         {
-            ResultOperationRepository = new ResultOperationRepository(connString);
+            OperationResultRepository = new NHOperationResultRepository();
         }
-            public ActionResult Index()
-            {
-            ViewBag.Hol = ResultOperationRepository.GetAll();
-            return View();
-            }
+
+        // GET: OperationResult
+        public ActionResult Index()
+        {
+            var all = OperationResultRepository.GetAll();
+
+            return View(all);
+        }
     }
 }
