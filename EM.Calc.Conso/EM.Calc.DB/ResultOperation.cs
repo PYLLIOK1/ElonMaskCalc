@@ -2,15 +2,17 @@
 
 namespace EM.Calc.DB
 {
-    public class OperationResult : IEntity
+    public class ResultOperation : IEntity
     {
         public virtual long Id { get; set; }
 
         public virtual long UserId { get; set; }
 
+        public virtual long OperationId { get; set; }
+
         public virtual User User { get; set; }
 
-        public virtual long OperationId { get; set; }
+        public virtual Operation Operation { get; set; }
 
         public virtual string Args { get; set; }
 

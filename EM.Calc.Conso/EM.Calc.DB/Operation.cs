@@ -1,11 +1,17 @@
-﻿namespace EM.Calc.DB
+﻿using System.Collections.Generic;
+
+namespace EM.Calc.DB
 {
     public class Operation : IEntity
     {
-        public long Id { get; set; }
+        public virtual long Id { get; set; }
 
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
-        public int Rating { get; set; }
+        public virtual int Rating { get; set; }
+
+        public virtual int ArgsCount { get; set; }
+
+        public virtual string Owner { get; set; }
     }
 }

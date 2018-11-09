@@ -9,11 +9,11 @@ namespace EM.Calc.Web.Controllers
 {
     public class ResultOperationController : Controller
     {
-        IEntityRepository<OperationResult> OperationResultRepository;
+        IEntityRepository<ResultOperation> OperationResultRepository;
 
         public ResultOperationController()
         {
-            OperationResultRepository = new NHOperationResultRepository();
+            OperationResultRepository = new NHResultOperationRepository();
         }
 
         // GET: OperationResult

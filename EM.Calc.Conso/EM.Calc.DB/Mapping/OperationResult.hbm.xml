@@ -2,7 +2,7 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
     namespace="EM.Calc.DB" assembly="EM.Calc.DB">
 
-  <class name="OperationResult" table="ResultOperation">
+  <class name="ResultOperation" table="ResultOperation">
 
     <id name="Id">
       <generator class="native" />
@@ -11,8 +11,11 @@
     <property name="Args" />
     <property name="Result" />
     <property name="Status" />
+    <property name="CreationDate" />
+    <property name="ExecTime" />
 
     <many-to-one name="User" column="UserId" lazy="false"/>
+    <many-to-one name="Operation" column="OperationId" lazy="false"/>
 
   </class>
 

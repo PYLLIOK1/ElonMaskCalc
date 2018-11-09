@@ -1,4 +1,6 @@
-﻿using EM.Calc.Web.Models;
+﻿using EM.Calc.DB;
+using EM.Calc.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -8,15 +10,37 @@ namespace EM.Calc.Web.Controllers
     public class CalcController : Controller
     {
         private Core.Calc calc;
+        IEntityRepository<Operation> nHOperationRepository;
+        IEntityRepository<User> nHUserRepository;
+        IEntityRepository<Calc.DB.ResultOperation> ResultOperationRepository;
         public CalcController()
         {
+            nHOperationRepository = new NHOperationRepository();
+            nHUserRepository = new NHUserRepository();
+            ResultOperationRepository = new NHResultOperationRepository();
             calc = new Core.Calc(@"E:\");
         }
-        private OperationResult Calc(string oper, double[] args)
+        private Models.OperationResult Calc(string oper, double[] args)
         {
             var result = calc.Execute(oper, args);
+            var user = nHUserRepository.Load(3);
+            var operation = nHOperationRepository.GetAll().FirstOrDefault(x =>x.Name==oper);
+            var Oper = new Calc.DB.ResultOperation
+            {
+                UserId = 3,
+                Operation = operation,
+                User = user,
+                ExecTime = new Random().Next(1, 1000),
+                OperationId = operation.Id,
+                CreationDate = DateTime.Now,
+                Status = EM.Calc.DB.OperationResultStatus.DONE,
+                Result = result ?? double.NaN,
+                Args = string.Join(" ", args)
+            };
 
-            return new OperationResult()
+            ResultOperationRepository.Save(Oper);
+
+            return new Models.OperationResult()
             {
                 Name = oper,
                 Result = result
@@ -55,5 +79,6 @@ namespace EM.Calc.Web.Controllers
 
             return PartialView("Execute", result);
         }
+
     }
 }

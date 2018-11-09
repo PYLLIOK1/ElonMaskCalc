@@ -10,16 +10,10 @@ namespace EM.Calc.Web.Controllers
 {
     public class HomeController : Controller
     {
-        IEntityRepository<User> UserRepository;
-
-        public HomeController()
-        {
-            UserRepository = new NHUserRepository();
-        }
+        
 
         public ActionResult Index()
         {
-            ViewBag.Results = UserRepository.Load(3);
             return View();
         }
 

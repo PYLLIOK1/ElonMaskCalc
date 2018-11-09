@@ -4,7 +4,7 @@ namespace EM.Calc.DB
 {
     public interface IEntityRepository<T> where T : class, IEntity
     {
-        T Create();
+        T Create(T entity);
 
         T Load(long id);
 
