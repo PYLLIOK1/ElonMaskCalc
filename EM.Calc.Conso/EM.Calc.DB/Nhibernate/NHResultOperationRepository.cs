@@ -16,7 +16,8 @@ namespace EM.Calc.DB
             using (var transaction = session.BeginTransaction())
             {
                 var entity = session.Get<ResultOperation>(id);
-                session.Delete(entity);
+                entity.Status = OperationResultStatus.EXECUTING;
+                session.Update(entity);
                 transaction.Commit();
             }
             NHibernateHelper.CloseSession();
